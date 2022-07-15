@@ -6,6 +6,7 @@ BLACK = (0, 0, 0)
 WHITE = (200, 200, 200)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+GREEN = (0, 255, 0)
 WINDOW_HEIGHT = 600
 WINDOW_WIDTH = 600
 
@@ -33,6 +34,13 @@ def draw_grid():
             elif y == 2:
                 rect = pygame.Rect(idx*block_size, idx2*block_size,block_size, block_size)
                 pygame.draw.rect(SCREEN, BLUE, rect, 0)
+            elif y == 3:
+                rect = pygame.Rect(idx*block_size, idx2*block_size,block_size, block_size)
+                pygame.draw.rect(SCREEN, GREEN, rect, 0)
+
+def add_markers(x, y, x2, y2):
+    matrix[x][y] = 3
+    matrix[x2][y2] = 3
 
 
 def draw_wall(x, y):
@@ -58,6 +66,7 @@ def flood_fill(x ,y, old, new, update_matrix):
     flood_fill(x, y+1, old, new, update_matrix)
     flood_fill(x, y-1, old, new, update_matrix)
 
+add_markers(random.randint(0, GRID_X-1), random.randint(0, GRID_Y-1), random.randint(0, GRID_X-1), random.randint(0, GRID_Y-1))
 
 def main():
     global matrix
