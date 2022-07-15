@@ -1,11 +1,11 @@
 # Using a Python dictionary to act as an adjacency list
 graph = {
     'A' : ['B','C'],
-    'B' : ['D', 'E', 'B'],
+    'B' : ['D', 'E', 'B', 'A'],
     'C' : ['F'],
-    'D' : [],
+    'D' : ['F'],
     'E' : ['F'],
-    'F' : [],
+    'F' : ['G'],
     'G' : ['B'],
 }
 
@@ -23,6 +23,6 @@ def dfs(visited, graph, node, target):
     return False
 
 # Driver Code
-found = dfs(visited, graph, 'A', 'D')
+found = dfs(visited, graph, 'D', 'A')
 
 print(found)
