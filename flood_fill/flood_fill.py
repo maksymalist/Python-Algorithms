@@ -32,4 +32,4 @@ def flood_fill(x ,y, old, new):
     flood_fill(x, y-1, old, new)
 
 flood_fill(0,0,2,1)
-print(print(matrix))
+print(matrix)

@@ -3,7 +3,6 @@ def binary_search(nums, target):
     
     low = 0
     high = len(nums) - 1
-    mid = 0
     
     while low <= high:
 
@@ -24,4 +23,4 @@ def binary_search(nums, target):
     # If we reach here, then the element was not present
     return -1
 
-print(binary_search(array, 2))
+print(binary_search(array, 89))
