@@ -1,39 +1,43 @@
-def max_island(grid):
+def updateMatrix(mat):
     
-    R, C = len(grid[0]), len(grid)
-    visited = [[False for row in range(0,R)] for col in range(0,C)]
-    mx = 0
+    R, C = len(mat[0]), len(mat)
         
     def dfs(r,c):
         
-        if r < 0 or r >= len(grid[0]) or c < 0 or c >= len(grid):
+        if r < 0 or r >= len(mat[0]) -1 or c < 0 or c >= len(mat)-1:
             return 0
         
         
-        if grid[c][r] == 0 or visited[c][r] == True:
+        print(r, c)
+        
+        
+        if mat[c][r] != 1:
             return 0
         
-        visited[c][r] = True
+        neighbors = 4
         
+        if mat[c][r+1] == 1:
+            neighbors -= 1
+            
+        if mat[c+1][r] == 1:
+            neighbors -= 1
+            
+        if mat[c-1][r] == 1:
+            neighbors -= 1
+            
+        if mat[c][r-1] == 1:
+            neighbors -= 1
         
-        return 1 + dfs(r-1, c) + dfs(r+1, c) + dfs(r, c-1) + dfs(r, c+1)
+        if neighbors == 0:
+            return 1 + dfs(r-1, c) + dfs(r+1, c) + dfs(r, c-1) + dfs(r, c+1)
+        else:
+            return 1
+            
+    for y in range(0, C):
+        for x in range(0, R):
+            if mat[y][x] > 1:
+                mat[y][x] = dfs(x,y)
         
-    for i in range(0, C):
-        for j in range(0, len(grid[i])):
-            print(f"row:{j} col:{i}")
-            if grid[i][j] == 1:
-                mx = max(dfs(j,i), mx)
-    
-    return mx
-    
-    
-grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],
-        [0,0,0,0,0,0,0,1,1,1,0,0,0],
-        [0,1,1,0,1,0,0,0,0,0,0,0,0],
-        [0,1,0,0,1,1,0,0,1,0,1,0,0],
-        [0,1,0,0,1,1,0,0,1,1,1,0,0],
-        [0,0,0,0,0,0,0,0,0,0,1,0,0],
-        [0,0,0,0,0,0,0,1,1,1,0,0,0],
-        [0,0,0,0,0,0,0,1,1,0,0,0,0]]
+    return mat
 
-print(max_island(grid))
+print(updateMatrix([[0,0,0],[0,1,0],[1,1,1]]))

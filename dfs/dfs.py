@@ -9,20 +9,24 @@ graph = {
     'G' : ['B'],
 }
 
-visited = set() # Set to keep track of visited nodes.
-
+visited = set() # Set to keep track of visited nodes
 def dfs(visited, graph, node, target):
-    print(node)
+    
+    if not graph.get(node):
+        return False
+    
     if node == target:
         return True
+    
     if node not in visited:
         visited.add(node)
-        for neighbour in graph[node]:
-            if dfs(visited, graph, neighbour, target):
+        
+        for neigbor in graph[node]:
+            if dfs(visited, graph, neigbor, target):
                 return True
+            
     return False
-
 # Driver Code
-found = dfs(visited, graph, 'D', 'A')
+found = dfs(visited, graph, 'Ds', 'A')
 
 print(found)

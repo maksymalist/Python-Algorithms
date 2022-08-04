@@ -39,5 +39,5 @@ def permute(n, k):
     return permutations
 
 
-perms = permute(5, 4) ## returns matrix of perms
+perms = permute(5, 5) ## returns matrix of perms
 print(perms)

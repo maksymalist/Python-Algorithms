@@ -23,4 +23,4 @@ def binary_search(nums, target):
     # If we reach here, then the element was not present
     return -1
 
-print(binary_search(array, 89))
+print(binary_search(array, 2))
