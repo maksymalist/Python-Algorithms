@@ -3,7 +3,7 @@ def updateMatrix(mat):
     R, C = len(mat[0]), len(mat)
         
     def dfs(r,c):
-        
+        print("smoething")
         if r < 0 or r >= len(mat[0]) -1 or c < 0 or c >= len(mat)-1:
             return 0
         
@@ -33,8 +33,8 @@ def updateMatrix(mat):
         else:
             return 1
             
-    for y in range(0, C):
-        for x in range(0, R):
+    for y in range(C):
+        for x in range(R):
             if mat[y][x] > 1:
                 mat[y][x] = dfs(x,y)
         
