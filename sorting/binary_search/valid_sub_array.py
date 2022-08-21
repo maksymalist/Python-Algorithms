@@ -10,7 +10,7 @@ def isValidSubsequence(array, sequence):
             new_arr.append(i)
 
     print(new_arr)
-    return array == new_arr
+    return sequence == new_arr
 
 
 

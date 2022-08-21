@@ -6,7 +6,8 @@ graph = {
     'D' : ['F'],
     'E' : ['F'],
     'F' : ['G'],
-    'G' : ['B'],
+    'G' : ['B', 'Ds'],
+    'Ds': ['G']
 }
 
 visited = set() # Set to keep track of visited nodes
