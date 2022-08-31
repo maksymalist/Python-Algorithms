@@ -1,23 +1,22 @@
 def quick_sort(seq):
-    
+
     if len(seq) <= 1:
         return seq
     
-    else:
-        pivot = seq.pop()
-        
-        
+    pivot = seq[0]
+    
     items_greater = []
     items_smaller = []
+    
     
     for i in seq:
         if i > pivot:
             items_greater.append(i)
-        else:
+            
+        if i < pivot:
             items_smaller.append(i)
             
     return quick_sort(items_smaller) + [pivot] + quick_sort(items_greater)
-        
         
         
 

@@ -19,6 +19,8 @@ SCREEN = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_WIDTH))
 CLOCK = pygame.time.Clock()
 SCREEN.fill(BLACK)
 
+visited = [[False for x in range(GRID_X)] for y in range(GRID_Y)]
+
 
 def draw_grid():
     block_size = 20
@@ -39,6 +41,7 @@ def draw_wall(x, y):
     matrix[x][y] = 1
 
 def flood_fill(x ,y, old, new, update_matrix):
+    global visited
     print(x, y)
     # we need the x and y of the start position, the old value,
     # and the new value
@@ -47,11 +50,12 @@ def flood_fill(x ,y, old, new, update_matrix):
     if x < 0 or x >= len(matrix[0]) or y < 0 or y >= len(matrix):
         return
     # secondly, check if the current position equals the old value
-    if matrix[y][x] != old:
+    if matrix[y][x] != old or visited[y][x]:
         update_matrix()
         return
     # thirdly, set the current position to the new value
     matrix[y][x] = new
+    visited[y][x] = True
     # fourthly, attempt to fill the neighboring positions
     flood_fill(x+1, y, old, new, update_matrix)
     flood_fill(x-1, y, old, new, update_matrix)

@@ -80,13 +80,15 @@ class LinkedList(object):
     
     def reverse(self):
         prev, current = None, self.head
+
         while current:
             next = current.next
-            current.next = prev # None 1 -> None 
-            prev = current      # 1
-            current = next      # 
-        print(prev.value)
-        self.head = prev
+            current.next = prev
+            prev = current
+            current = next
+        
+        self.head =  prev
+        return self.head
             
 
         
